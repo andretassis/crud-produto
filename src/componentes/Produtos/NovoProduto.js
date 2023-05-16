@@ -13,19 +13,25 @@ function NovoProduto() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        // Cria um novo objeto
         const novoItem = {
             produto,
             quantidade,
         }
 
+        // Seleciona os itens já existentes no Local Storage
         const itemExistente = localStorage.getItem('meusItens')
 
+        // Escreve um item existente como JSON ou inicia um array vazio 
         const itemParse = itemExistente ? JSON.parse(itemExistente) : []
 
+        // Adiciona o novo item em um array
         itemParse.push(novoItem)
 
+        // Armazena o array no local storage
         localStorage.setItem('meusItens', JSON.stringify(itemParse))
 
+        // Limpa os dados do formulário
         setProduto('')
         setQuantidade('')
     }
@@ -39,6 +45,9 @@ function NovoProduto() {
                     <div className="col">
                         <input type="text" className="form-control" placeholder="Produto" aria-label="Produto" value={produto} onChange={(e) => setProduto(e.target.value)} />
                     </div>
+                    <div className="col">
+                        <input type="text" className="form-control" placeholder="Marca" aria-label="Marca" />
+                    </div>
 
                 </div>
 
@@ -46,7 +55,14 @@ function NovoProduto() {
                     <div className="col">
                         <input type="text" className="form-control" placeholder="Quantidade" aria-label="Quantidade" value={quantidade} onChange={(e) => setQuantidade(e.target.value)} />
                     </div>
-
+                    <div className="col">
+                        <select className="form-select" aria-label="Default select example">
+                            <option>Unidade</option>
+                            <option value="1">UN</option>
+                            <option value="2">MT</option>
+                            <option value="3">KG</option>
+                        </select>
+                    </div>
                 </div>
             </form >
 
