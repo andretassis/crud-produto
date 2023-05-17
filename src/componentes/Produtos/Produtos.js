@@ -1,10 +1,25 @@
 import { useNavigate } from 'react-router-dom'
-import { produto, marca, quantidade, unidade } from '../Produtos/NovoProduto'
+import { useState, useEffect } from 'react'
 import '../Produtos/Produtos.css'
+import trash from '../../imagens/trash3.svg'
+import pencil from '../../imagens/pencil.svg'
 
 function Produtos() {
 
     const navigate = useNavigate()
+
+    const [meusProdutos, setMeusProdutos] = useState([])
+
+    useEffect(() => {
+        const meusProdutos = JSON.parse(localStorage.getItem('meusProdutos'))
+        if (meusProdutos) {
+            setMeusProdutos(meusProdutos)
+        }
+    }, [])
+
+    const apagarProduto = () => {
+        console.log(meusProdutos.filter)
+    }
 
     return (
         <>
@@ -15,23 +30,25 @@ function Produtos() {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Código</th>
                             <th scope="col">Produto</th>
                             <th scope="col">Marca</th>
                             <th scope="col">Quantidade</th>
                             <th scope="col">Unidade</th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Eletrodo 6013 2,5 mm</td>
-                            <td>ESAB</td>
-                            <td>150</td>
-                            <td>KG</td>
-                            <td>Editar</td>
-                        </tr>
+                        {meusProdutos.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.produto}</td>
+                                <td>{item.marca}</td>
+                                <td>{item.quantidade}</td>
+                                <td>{item.unidade}</td>
+                                <td><img src={trash} alt="Deletar" className="deletar-editar" onClick={apagarProduto} /></td>
+                                <td><img src={pencil} alt="Deletar" className="deletar-editar" onClick={() => navigate('/edit-produto')} /></td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

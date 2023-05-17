@@ -6,5 +6,10 @@
     -- campo quantidade tem que ser numero  --- ok
     -- verificar se tem algum igual já cadastrado (???)
 
-- construir a tabela dinamica
-- fazer a tabela pegar os dados armazenados no local storage para construir as linhas
+- construir a tabela dinamica --- ok
+- fazer a tabela pegar os dados armazenados no local storage para construir as linhas --- ok
+
+- criar funcão de deletar
+    -- colocar imagem de lixeira na linha
+    -- quando clicar na imagem vai deletar o item
+
