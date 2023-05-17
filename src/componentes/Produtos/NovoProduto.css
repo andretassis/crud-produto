@@ -20,3 +20,15 @@
 .container-botao {
     width: 20%;
 }
+
+.error {
+    color: red;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.success {
+    color: #198754;
+    font-weight: 700;
+    margin-top: 15px;
+}
