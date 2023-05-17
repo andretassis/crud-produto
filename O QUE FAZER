@@ -1,0 +1,10 @@
+
+- colocar todos os campos de cadastro de produto --- ok
+- organizar o codigo para todos os campos de cadastro de produto --- ok
+- fazer as validacoes necessarias
+    -- nao pode campo vazio --- ok
+    -- campo quantidade tem que ser numero  --- ok
+    -- verificar se tem algum igual já cadastrado (???)
+
+- construir a tabela dinamica
+- fazer a tabela pegar os dados armazenados no local storage para construir as linhas
