@@ -17,9 +17,14 @@ function Produtos() {
         }
     }, [])
 
-    const apagarProduto = () => {
-        console.log(meusProdutos.filter)
-    }
+    // LER DE NOVO 
+    const apagarProduto = (index) => {
+        const updatedProdutos = [...meusProdutos]
+        updatedProdutos.splice(index, 1)
+
+        setMeusProdutos(updatedProdutos)
+        localStorage.setItem('meusProdutos', JSON.stringify(updatedProdutos))
+    };
 
     return (
         <>
