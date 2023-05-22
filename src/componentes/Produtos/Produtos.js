@@ -26,6 +26,10 @@ function Produtos() {
         localStorage.setItem('meusProdutos', JSON.stringify(updatedProdutos))
     };
 
+    const editarProduto = (id) => {
+        navigate(`/edit-produto/${id}`)
+    }
+
     return (
         <>
             <div className="container d-flex justify-content-center">
@@ -50,8 +54,8 @@ function Produtos() {
                                 <td>{item.marca}</td>
                                 <td>{item.quantidade}</td>
                                 <td>{item.unidade}</td>
+                                <td><img src={pencil} alt="Editar" className="deletar-editar" onClick={() => { editarProduto(index) }} /></td>
                                 <td><img src={trash} alt="Deletar" className="deletar-editar" onClick={apagarProduto} /></td>
-                                <td><img src={pencil} alt="Deletar" className="deletar-editar" onClick={() => navigate('/edit-produto')} /></td>
                             </tr>
                         ))}
                     </tbody>

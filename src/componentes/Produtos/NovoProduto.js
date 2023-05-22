@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import '../Produtos/NovoProduto.css'
 import voltar from '../../imagens/arrow-left-circle.svg'
 
@@ -7,14 +7,22 @@ function NovoProduto() {
 
     const navigate = useNavigate()
 
-    const [produto, setProduto] = useState('')
-    const [quantidade, setQuantidade] = useState('')
-    const [marca, setMarca] = useState('')
-    const [unidade, setUnidade] = useState('')
+    const [cadastroProduto, setCadastroProduto] = useState(defaultObject)
 
-    const [erro, setErro] = useState('')
-    const [sucesso, setSucesso] = useState('')
+    let defaultObject = {
+        produto: '',
+        quantidade: '',
+        marca: '',
+        unidade: '',
+    }
 
+    const { id } = useParams()
+
+    useEffect(() => {
+        if (cadastroProduto.produto !== '' || cadastroProduto.quantidade !== '' || cadastroProduto.marca !== '' || cadastroProduto.unidade !== '') {
+            setCadastroProduto(cadastroProduto)
+        }
+    })
 
     const criaProduto = (event) => {
         event.preventDefault();
@@ -65,19 +73,19 @@ function NovoProduto() {
             <form className="formulario d-flex justify-content-center">
                 <div className="col formulario-estrutura">
                     <div className="col">
-                        <input type="text" className="form-control" placeholder="Produto" aria-label="Produto" value={produto} onChange={(e) => setProduto(e.target.value)} />
+                        <input type="text" className="form-control" placeholder="Produto" aria-label="Produto" value={cadastroProduto.produto} onChange={(e) => setProduto(e.target.value)} />
                     </div>
                     <div className="col">
-                        <input type="text" className="form-control" placeholder="Marca" aria-label="Marca" value={marca} onChange={(e) => setMarca(e.target.value)} />
+                        <input type="text" className="form-control" placeholder="Marca" aria-label="Marca" value={cadastroProduto.marca} onChange={(e) => setMarca(e.target.value)} />
                     </div>
                 </div>
 
                 <div className="col">
                     <div className="col">
-                        <input type="number" className="form-control" placeholder="Quantidade" aria-label="Quantidade" value={quantidade} onChange={(e) => setQuantidade(e.target.value)} />
+                        <input type="number" className="form-control" placeholder="Quantidade" aria-label="Quantidade" value={cadastroProduto.quantidade} onChange={(e) => setQuantidade(e.target.value)} />
                     </div>
                     <div className="col">
-                        <select className="form-select" aria-label="Default select example" value={unidade} onChange={(e) => setUnidade(e.target.value)}>
+                        <select className="form-select" aria-label="Default select example" value={cadastroProduto.unidade} onChange={(e) => setUnidade(e.target.value)}>
                             <option>Unidade</option>
                             <option value="UN">UN</option>
                             <option value="MT">MT</option>
