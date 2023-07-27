@@ -13,3 +13,7 @@ Os dados também são removidos ou editados no localStorage e as alterações po
 
 Não me preocupei com estilização, visto que meu foco foi apenas o CRUD em si. Porém, utilizei bootstrap<br>
 para confecção de todos os visuais da página.
+
+#### Deploy
+
+https://crud-produto.vercel.app/
